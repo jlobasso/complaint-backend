@@ -1,6 +1,6 @@
-//const mongoose = require('mongoose');
-// mongoose.connect('mongodb://localhost:3306');
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost:3306');
 
-//mongoose.connect('mongodb://localhost/auth');
+mongoose.connect('mongodb://localhost/auth');
 
-//module.exports = mongoose;
+module.exports = mongoose;

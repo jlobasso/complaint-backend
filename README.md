@@ -70,3 +70,4 @@ express --view=pug
 
 
 ## DOCUMENTACION
+sudo snap install postman	
