@@ -4,11 +4,18 @@ const db = require("../config/mysql/connect");
 const vLogin = require('../validations/vLogin');
 const Crypto = require('crypto-js')
 const {message, errorMessage} = require("../functions/messages");
+const User = require('../config/mongoose/models').User;
 
 
 router.post('/', function(req, res, next) {  
   const username = req.body.username;
   const password = req.body.password;
+
+  User.find()
+  .then(function (users) {
+      res.locals.users = users;
+      return res.render('users/users.html');
+  });
 
   if(vLogin.vLoginUsername(username) || 
       vLogin.vLoginPassword(password)){
