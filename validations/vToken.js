@@ -5,7 +5,7 @@ function vToken (parametros) {
   return new Promise(resolve=>{
     token =  /[a-z0-9]+/g.test( parametros );
     if(token){
-      db.query("SELECT id_user, username, token_time FROM web_buddy.users WHERE token=?", parametros,
+      db.query("SELECT id_user, username, token_time FROM complaint.users WHERE token=?", parametros,
       function(error, rows, fields){
           if (error){ 
             resolve(errorMessage(800, error.sqlMessage));
@@ -29,7 +29,7 @@ function vToken (parametros) {
                 token_active: 0
               };      
 
-              db.query('UPDATE web_buddy.users SET ? WHERE ?',[registro,{id_user:idUser}], 
+              db.query('UPDATE complaint.users SET ? WHERE ?',[registro,{id_user:idUser}], 
               function(error,filas){
                 if (error){
                   resolve(errorMessage(800, error.sqlMessage));

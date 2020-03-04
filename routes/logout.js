@@ -22,7 +22,7 @@ router.get('/', async function(req, res, next) {
       last_login: new Date()
     };    
 
-    db.query('UPDATE web_buddy.users SET ? WHERE ?',[registro,{id_user:rToken.id_user}], 
+    db.query('UPDATE complaint.users SET ? WHERE ?',[registro,{id_user:rToken.id_user}], 
     function(error,filas){
       if (error){
         res.send(errorMessage(800, error.sqlMessage));

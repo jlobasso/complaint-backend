@@ -8,7 +8,7 @@ router.get('/', async function(req, res, next) {
   try { 
       token =  /[a-z0-9]+/g.test( req.query.token );
       if(token){
-        db.query("SELECT id_user, token_time FROM web_buddy.users WHERE token=?", req.query.token,
+        db.query("SELECT id_user, token_time FROM complaint.users WHERE token=?", req.query.token,
         function(error, rows, fields){
             if (error){ 
               res.send(errorMessage(800, error.sqlMessage));
@@ -33,7 +33,7 @@ router.get('/', async function(req, res, next) {
                   token_active: 0
                 };      
   
-                db.query('UPDATE web_buddy.users SET ? WHERE ?',[registro,{id_user:idUser}], 
+                db.query('UPDATE complaint.users SET ? WHERE ?',[registro,{id_user:idUser}], 
                 function(error,filas){
                   if (error){
                     res.send(errorMessage(800, error.sqlMessage));

@@ -14,7 +14,7 @@ router.post('/', function(req, res, next) {
       vLogin.vLoginPassword(password)){
 
      
-    const qryRandom = "SELECT random FROM web_buddy.users WHERE username=?";
+    const qryRandom = "SELECT random FROM complaint.users WHERE username=?";
     db.query(qryRandom, username,
       function(error, rows, fields){
         if (error){
@@ -23,7 +23,7 @@ router.post('/', function(req, res, next) {
           if (rows.length) {
             
             const passHash = Crypto.SHA256(rows[0].random+password).toString();
-            const qryIdUser = "SELECT id_user FROM web_buddy.users WHERE username=? AND password=? AND active=?";
+            const qryIdUser = "SELECT id_user FROM complaint.users WHERE username=? AND password=? AND active=?";
             
             db.query(qryIdUser, [username, passHash, 1],
               function(error, rows, fields){
@@ -44,7 +44,7 @@ router.post('/', function(req, res, next) {
                       last_login: new Date()
                     };    
 
-                    db.query('UPDATE web_buddy.users SET ? WHERE ?',[registro,{id_user:idUser}], 
+                    db.query('UPDATE complaint.users SET ? WHERE ?',[registro,{id_user:idUser}], 
                     function(error,filas){
                       if (error){
                         res.send(errorMessage(800, error.sqlMessage));
@@ -52,7 +52,7 @@ router.post('/', function(req, res, next) {
                         
                         if (rows.length) {
                           
-                          const qryToken = "SELECT token FROM web_buddy.users WHERE id_user=?";
+                          const qryToken = "SELECT token FROM complaint.users WHERE id_user=?";
                           db.query(qryToken, [rows[0].id_user],
                             function(error, rows, fields){
                               

@@ -4,7 +4,7 @@ var conexion = mysql.createConnection({
 host: 'localhost',
  user: 'root',
  password: 'chinchulin',
- database: 'web_buddy',
+ database: 'complaint',
  port: 3306
 });
 

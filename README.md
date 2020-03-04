@@ -34,7 +34,7 @@
 	cd documents
 ##### IMPORTAR
 	cd documents
-	mysql -u root -p < web_buddy.sql
+	mysql -u root -p < complaint.sql
 
 ##### En caso de querer eliminar mysql completamente del sistema ejecutar lo siguiente
 	sudo apt-get purge mysql-server mysql-client mysql-common mysql-server-core-* mysql-client-core-*
