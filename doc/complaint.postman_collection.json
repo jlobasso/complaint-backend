@@ -1,0 +1,105 @@
+{
+	"variables": [],
+	"info": {
+		"name": "complaint",
+		"_postman_id": "06ccd978-631f-0e72-9787-f851ab7d1bd3",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "sesion",
+			"description": "",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"url": "localhost:3000/login",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\": \"GABY\",\n\t\"password\": \"123456\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"url": {
+							"raw": "localhost:3000/logout?token=1d5a22da5fe2fb20ade12f63efcd746687218383df2996fcb723e5710e17d7a6de2688b56763b1a67cda1c7f9a9f0b1db357e9c38f2673313fc43b22e27638ce",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"logout"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "1d5a22da5fe2fb20ade12f63efcd746687218383df2996fcb723e5710e17d7a6de2688b56763b1a67cda1c7f9a9f0b1db357e9c38f2673313fc43b22e27638ce",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\": \"JLOBASSO\",\n\t\"password\": \"123456\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "token",
+					"request": {
+						"url": {
+							"raw": "localhost:3000/token/?token=b71baa72ca9e5cbb007cce982e5a57a5880bbaac1c7390eaa8452e5ab98a66e2d95db40a604b851d728554d88f22de9eb3c3c69f63a6cb09185af73363ff67fa",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"token",
+								""
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "b71baa72ca9e5cbb007cce982e5a57a5880bbaac1c7390eaa8452e5ab98a66e2d95db40a604b851d728554d88f22de9eb3c3c69f63a6cb09185af73363ff67fa",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
