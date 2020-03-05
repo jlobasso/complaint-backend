@@ -4,7 +4,13 @@ const db = require("../config/mysql/connect");
 const vLogin = require('../validations/vLogin');
 const Crypto = require('crypto-js')
 const {message, errorMessage} = require("../functions/messages");
-const User = require('../config/mongoose/models').User;
+
+const Person = require('../config/mongoose/schemas').Person;
+
+
+Person.path('name').set(function (v) {
+  return capitalize(v);
+});
 
 
 router.post('/', function(req, res, next) {  

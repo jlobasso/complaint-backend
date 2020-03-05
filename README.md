@@ -65,6 +65,7 @@ express --view=pug
 
 ##### Instalar módulos
 	npm install mysql --save
+	sudo apt install -y mongodb
 	npm install mongoose
 	npm install crypto-js
 

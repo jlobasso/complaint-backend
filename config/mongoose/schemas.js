@@ -1,12 +1,24 @@
-const mongoose = require('./connect');
-mongoose.Schema = mongoose.Schema;
+const mongoose = require('./connect'),
+      Schema = mongoose.Schema;
 
 const schemas = {
-
-    userSchema: new Schema({
-        username: {type: String},
-        password: {type: String},
-    })
+ 
+    Person: new Schema({
+        name: {
+          first: String,
+          last: String
+        },
+        email: {
+          type: String,
+          required: true,
+          index: {
+            unique: true,
+            sparse: true
+          }
+        },
+        alive: Boolean
+      })
+    
 
 };
 

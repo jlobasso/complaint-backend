@@ -14,7 +14,7 @@ conexion.connect(function (error) {
    console.log('connection failed');
  }
  else {
-   console.log('successful connection');
+   console.log('MySQL connection');
  }
 });
 
