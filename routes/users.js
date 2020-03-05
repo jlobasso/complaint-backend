@@ -49,17 +49,14 @@ router.post('/', async function(req, res, next) {
     if(rToken.status === 'ok' && rToken.id_user){  
 
 
-      // var doc = { firstName: "Roshan", lastName: "22" };
-
-      User.insert({ firstName: "Roshan", lastName: "22" }, function(err, res) {
-        if (err) throw err;
-          console.log("Document inserted");
-          // close the connection to db when you are done with it
-        db.close();
+      User.create({name: { firstName: "Jorge", lastName: "Lobasso"}}, function(err) {
+        if (err) return console.error(err);
       });
-
-
-
+      
+      User.find(function(err, user) {
+        if (err) return console.error(err);
+        console.log(user);
+      });
 
 
       const qryUser = "SELECT username, email FROM complaint.users WHERE username=? OR email=? AND active=?";

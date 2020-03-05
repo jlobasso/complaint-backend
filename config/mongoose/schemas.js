@@ -4,17 +4,17 @@ const mongoose = require('./connect'),
 const schemas = {
     
     userSchema: new Schema({
-        name: {
+        // name: {
             firstName: String,
-            lastName: String
-        },
+            lastName: String,
+        // },
         created: Date
     }),
 
     authorSchema: new Schema ({
         _id: mongoose.Schema.Types.ObjectId,
         name: {
-                firstName: String,
+            firstName: String,
             lastName: String
         },
         biography: String,

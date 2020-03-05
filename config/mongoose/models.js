@@ -3,7 +3,7 @@ userSchema = require('./schemas').userSchema;
 
 const models = {
 
-    User: mongoose.model('user', userSchema)
+    User: mongoose.model('User', userSchema)
 
 };
 
