@@ -8,25 +8,13 @@ const {message, errorMessage} = require("../functions/messages");
 const Person = require('../config/mongoose/schemas').Person;
 
 
-Person.path('name').set(function (v) {
-  return capitalize(v);
-});
-
-
 router.post('/', function(req, res, next) {  
   const username = req.body.username;
   const password = req.body.password;
 
-  User.find()
-  .then(function (users) {
-      res.locals.users = users;
-      return res.render('users/users.html');
-  });
-
   if(vLogin.vLoginUsername(username) || 
       vLogin.vLoginPassword(password)){
 
-     
     const qryRandom = "SELECT random FROM complaint.users WHERE username=?";
     db.query(qryRandom, username,
       function(error, rows, fields){

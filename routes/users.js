@@ -5,6 +5,8 @@ const db = require("../config/mysql/connect");
 const Crypto = require('crypto-js')
 const { message, errorMessage } = require("../functions/messages");
 
+const User = require('../config/mongoose/models').User;
+
 
 router.get('/', async function(req, res, next) {  
     try {
@@ -45,7 +47,21 @@ router.post('/', async function(req, res, next) {
   try {
     var rToken = await vToken(req.body.token);  
     if(rToken.status === 'ok' && rToken.id_user){  
-    
+
+
+      // var doc = { firstName: "Roshan", lastName: "22" };
+
+      User.insert({ firstName: "Roshan", lastName: "22" }, function(err, res) {
+        if (err) throw err;
+          console.log("Document inserted");
+          // close the connection to db when you are done with it
+        db.close();
+      });
+
+
+
+
+
       const qryUser = "SELECT username, email FROM complaint.users WHERE username=? OR email=? AND active=?";
       db.query(qryUser, [req.body.username, req.body.email, 1],function(error, rows, fields){
         if (error){
