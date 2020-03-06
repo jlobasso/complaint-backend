@@ -1,0 +1,102 @@
+# complaint-backend
+
+## Correr la aplicacion (!IMPORTANTE: antes lanzar el proyecto importar la base de datos):
+	npm install
+##### PRODUCCION
+	npm start 
+##### DESARROLLO
+	DEBUG=web-buddy-backend:* npm start
+
+## CONFIGURAR MySQL y mongodb UNICA VEZ
+
+	sudo apt install -y mongodb
+
+	sudo apt install mysql-server
+	sudo mysql_secure_installation
+
+	sudo mysql
+
+##### Consultar cuál método de autenticación usa cada una de sus cuentas de usuario de MySQL usando el siguiente comando:
+	mysql> SELECT user,authentication_string,plugin,host FROM mysql.user;
+
+##### root autentica usando el plugin auth_socket. Para configurar la cuenta root para autenticarse usando una contraseña, ejecute el siguiente comando ALTER USER. Asegúrese de cambiar password (contraseña) a una contraseña segura de su elección.
+	mysql> ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'coloque password';
+
+##### Ejecutar FLUSH PRIVILEGES (purgar privilegios), lo que le dice al servidor que vuelva a cargar las tablas grant e implemente sus nuevos cambios
+	mysql> FLUSH PRIVILEGES;
+
+##### Verificar los métodos de autenticación que usa cada uno de sus usuarios nuevamente para confirmar que root ya no se autentica usando el plugin auth_socket:
+	mysql> SELECT user,authentication_string,plugin,host FROM mysql.user;
+
+	mysql> exit
+
+
+##antes de lanzar el proyecto, hacer dump e importar la base de datos
+##### DUMP
+	cd documents
+##### IMPORTAR
+	cd documents
+	mysql -u root -p < complaint.sql
+
+##### En caso de querer eliminar mysql completamente del sistema ejecutar lo siguiente
+	sudo apt-get purge mysql-server mysql-client mysql-common mysql-server-core-* mysql-client-core-*
+	sudo rm -rf /etc/mysql /var/lib/mysql
+	sudo apt-get autoremove
+	sudo apt-get autoclean
+
+
+## CREACION DEL PROYECTO
+
+##### INSTALAR & CONFIGURAR 
+	sudo apt update
+	
+	curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+	sudo apt-get install -y nodejs
+	sudo apt install nodejs
+	sudo apt install npm
+
+##### crear esqueleto de aplicación.
+	sudo npm install express-generator -g
+
+##### crea una aplicación Express
+	express --view=pug web-buddy-backend
+express --view=pug 
+
+##### change directory:
+	cd web-buddy-backend
+
+##### Instalar módulos
+	npm install mysql --save
+	npm install mongoose
+	npm install crypto-js
+
+
+## Testing NodeJs/Express API with Jest and Supertest
+
+###### Open your terminal and cd to the project root directory and run the command below:
+	npm install --save-dev jest supertest
+
+###### Open the package.json and add the code below to it.
+	"jest": {
+		"testEnvironment": "node",
+		"coveragePathIgnorePatterns": [
+		"/node_modules/"
+		]
+	},
+
+###### Next up we add the test script. Inside the scripts portion of the package.json, add the script below:
+	"test": "jest"
+
+
+###### Let us add a simple test to verify the configuration. Create a new directory called tests and add a new file sample.test.js. Inside the sample.test.js, add the code below:
+
+	describe('Sample Test', () => {
+	it('should test that true === true', () => {
+		expect(true).toBe(true)
+	})
+	})
+
+	npm test
+
+## DOCUMENTACION
+sudo snap install postman	

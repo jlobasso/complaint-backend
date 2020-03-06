@@ -4,10 +4,12 @@ const mongoose = require('./connect'),
 const schemas = {
     
     userSchema: new Schema({
-        // name: {
+        name: {
             firstName: String,
             lastName: String,
-        // },
+            email: String,
+            telefono: Number
+        },
         created: Date
     }),
 

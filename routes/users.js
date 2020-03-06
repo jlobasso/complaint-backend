@@ -49,7 +49,7 @@ router.post('/', async function(req, res, next) {
     if(rToken.status === 'ok' && rToken.id_user){  
 
 
-      User.create({name: { firstName: "Jorge", lastName: "Lobasso"}}, function(err) {
+      User.create({name: { lastName: "Lobasso", email: "dlobasso@gmail.com"}}, function(err) {
         if (err) return console.error(err);
       });
       
